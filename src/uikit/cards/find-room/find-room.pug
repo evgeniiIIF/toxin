@@ -1,0 +1,10 @@
+mixin find-room(opts)
+  form(action="#").find-room.card
+    .card__item
+      h3.find-room__title.card__title.type-h1= (opts.title)
+    .card__item
+      +air-datepicker-calendar(opts)
+    .card__item
+      +item-quantity-dropdown(opts.iqDropdown)
+    .card__item
+      +button-arrow(opts.buttonArrow)

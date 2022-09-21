@@ -1,0 +1,27 @@
+mixin footer(opts)
+  footer.footer
+    .footer__container.container
+      .footer__row
+        .footer__block-logo.block-logo
+          .block-logo__icon
+            +logo(opts)
+          p.block-logo__text.type-body= (opts.blockLogoText)
+        nav.footer__nav.nav-footer
+          each navItem in opts.navItems
+            .nav-footer__item
+              h3.nav-footer__title.type-h3= navItem.title
+              ul.nav-footer__list.nav-footer-list
+                each navListLink in navItem.links
+                  li.nav-footer-list__item
+                    a(href=navListLink.href).nav-footer-list__link.type-body= navListLink.text
+        .footer__subscribe.subscribe-footer
+          h3.subscribe-footer__title.type-h3= (opts.subscribe.title)
+          p.subscribe-footer__text.type-body= (opts.subscribe.text)
+          .subscribe-footer__field
+            +subscription-text-field(opts.subscribe.field)
+      .footer__copy.copy
+        .copy__row
+          p.copy__text.type-body= (opts.copy.text)
+          .copy__social.social
+            each copyIcon in opts.copy.icons
+              img(src=(copyIcon.src), alt=(copyIcon.alt)).social__icon
