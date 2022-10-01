@@ -4,6 +4,11 @@
 @import "./fonts.scss";
 @import "./colors.scss";
 
+// ================UIkit=================
+@import "../uikit/elements/elements-page/elements-page.scss";
+@import "../uikit/colors-and-type/colors-and-type.scss";
+@import "../uikit/cards/cards-page/cards-page.scss";
+
 // =================================
 
 html {
@@ -34,7 +39,6 @@ body {
 
 .ibg {
   position: relative;
-  padding-top: 100%;
   & img {
     position: absolute;
     left: 0;

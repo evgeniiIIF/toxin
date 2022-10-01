@@ -15,7 +15,7 @@ mixin content(opts)
     }
     
   if(opts.label)
-    label.dropdown__label.field__label.type-h3
+    .dropdown__label.field__label.type-h3
       h3.dropdown__label-text.field__label-text=(opts.label)
       .dropdown__field
         input.dropdown__input.field__input.type-body(class= (opts.js ? 'js-dropdown__button' : ''))&attributes(attributes)

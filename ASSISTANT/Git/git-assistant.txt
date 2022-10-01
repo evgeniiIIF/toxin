@@ -16,7 +16,7 @@ git remote set-url origin git@gitserver.com:user/repo_name.git
 
 Связать удаленную ветку (remote) с локальной (branch)
 
-git push -u <remote> <branch>
+git push -u <remote> <branch> - "git push -u origin main"
 git branch -vv
 ============================================
 

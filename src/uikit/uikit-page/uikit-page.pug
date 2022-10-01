@@ -136,7 +136,12 @@ include ../head/head.pug
         {text:'Кроватка', isChecked: true},
         {text:'Телевизор', isChecked: false},
         {text:'Шампунь', isChecked: false},
-      ]
+      ],
+      arrowSvg: {
+        name: 'expand-more', 
+        fill: '#1F2041',
+        opacity: '0.5'
+      }
     })
     +item-info-row({
       title: 'Комфорт', 

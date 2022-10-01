@@ -1,5 +1,5 @@
 import AirDatepicker from "air-datepicker";
-import "air-datepicker/air-datepicker.scss";
+import "air-datepicker/air-datepicker.css";
 
 const airDatepickerCalendars = document.querySelectorAll(".js-air-datepicker-calendar");
 const allDatepickers = [];
@@ -14,6 +14,7 @@ airDatepickerCalendars.forEach((airDatepickerCalendar) => {
   let apply = {
     content: "применить",
     className: "custom-apply-classname",
+    type: "button",
     onClick: (dp) => {
       let dropdown = dp.$el.closest(".js-dropdown.dropdown--menu-open");
       dropdown.classList.remove("dropdown--menu-open");
@@ -21,14 +22,13 @@ airDatepickerCalendars.forEach((airDatepickerCalendar) => {
   };
 
   // </button for calendar>
-
   const calendar = new AirDatepicker(airDatepickerCalendarMenu, {
     range: true,
     navTitles: {
       days: "MMMM yyyy",
     },
     multipleDatesSeparator: " - ",
-    altField: dropdownThree,
+    altField: dropdownThree ? dropdownThree : false,
     altFieldDateFormat: "dd MMM",
     minDate: new Date(),
     disableNavWhenOutOfRange: true,
@@ -45,12 +45,14 @@ airDatepickerCalendars.forEach((airDatepickerCalendar) => {
       }
     },
   });
-
   allDatepickers.push(calendar);
 
   // <button for calendar>
   let buttonClear = airDatepickerCalendar.querySelector(".air-datepicker-button");
   buttonClear.addEventListener("click", clearDropdownInputValue);
+  airDatepickerCalendar.querySelectorAll(".air-datepicker-button").forEach((button) => {
+    button.setAttribute("type", "button");
+  });
 
   function clearDropdownInputValue() {
     if (dropdownOne || dropdownTwo) {
@@ -59,5 +61,3 @@ airDatepickerCalendars.forEach((airDatepickerCalendar) => {
   }
   // </button for calendar>
 });
-
-// console.log(allDatepickers);

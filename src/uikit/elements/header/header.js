@@ -20,13 +20,21 @@
       return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
     },
   };
+  const mediaQuery = window.matchMedia("(min-width: 992px)");
+  mediaQuery.addListener(handleTabletChange);
+  handleTabletChange(mediaQuery);
 
+  function handleTabletChange(e) {
+    if (e.matches) {
+      // menu.classList.remove("js-menu--open");
+    }
+  }
   const body = document.body;
-  watchDevice();
   window.addEventListener("resize", watchDevice);
+  watchDevice();
 
   function watchDevice() {
-    if (isMobile.any()) {
+    if (isMobile.any() || !mediaQuery.matches) {
       if (body.classList.contains("pc")) {
         body.classList.remove("pc");
       }
@@ -39,35 +47,89 @@
     }
   }
 
-  if (isMobile.any()) {
-    const allHasSubmenu = document.querySelectorAll(".js-menu__item--has-submenu");
-    allHasSubmenu.forEach((submenuTrigger) => {
-      submenuTrigger.addEventListener("click", () => {
-        submenuTrigger.classList.toggle("js-menu__item--submenu-open");
-      });
-    });
-  }
-  // ----------show menu---------
-  const menuIcon = document.querySelector(".js-menu");
+  // ----------show mobile menu---------
+  const menuIcon = body.querySelector(".js-menu");
   menuIcon.addEventListener("click", showMobileMenu);
+  const header = menuIcon.closest(".header");
+  let isOpenMobileMenu = false;
 
   function showMobileMenu(event) {
     const menu = event.currentTarget;
 
     if (event.target.closest(".menu__icon")) {
-      menu.classList.toggle("js-menu--open");
+      if (!isOpenMobileMenu) {
+        menu.classList.add("js-menu--open");
+        body.classList.add("_lock");
+        addScrollWidth();
+        isOpenMobileMenu = true;
+      } else {
+        menu.classList.remove("js-menu--open");
+        body.classList.remove("_lock");
+        removeScrollWidth();
+        isOpenMobileMenu = false;
+      }
 
       const mediaQuery = window.matchMedia("(min-width: 992px)");
-      function handleTabletChange(e) {
-        if (e.matches) {
-          menu.classList.remove("js-menu--open");
-        }
-      }
       mediaQuery.addListener(handleTabletChange);
       handleTabletChange(mediaQuery);
+
+      function handleTabletChange(e) {
+        console.log(mediaQuery);
+        if (e.matches) {
+          menu.classList.remove("js-menu--open");
+          body.classList.remove("_lock");
+        }
+      }
+      function addScrollWidth() {
+        const scrollWidth = getScrollWidth();
+        header.style.paddingRight = scrollWidth;
+        body.style.paddingRight = scrollWidth;
+      }
+      function removeScrollWidth() {
+        header.style.paddingRight = "";
+        body.style.paddingRight = "";
+      }
+      function getScrollWidth() {
+        let div = document.createElement("div");
+
+        div.style.overflowY = "scroll";
+        div.style.width = "50px";
+        div.style.height = "50px";
+
+        document.body.append(div);
+        let scrollWidth = div.offsetWidth - div.clientWidth;
+
+        div.remove();
+        return scrollWidth + "px";
+      }
     }
-    function removeClass() {
-      menu.classList.remove("js-menu--open");
+  }
+
+  if (isMobile.any() || !mediaQuery.matches) {
+    body.addEventListener("click", showSubmenu);
+    let submenuIsOpen = false;
+
+    function showSubmenu(e) {
+      const submenuButton = e.target.closest(".js-item-menu--has-submenu");
+      const body = e.currentTarget;
+
+      if (submenuButton) {
+        if (!submenuIsOpen) {
+          submenuButton.classList.add("js-item-menu--submenu-open");
+          body.addEventListener("click", hideSubmenu);
+          submenuIsOpen = true;
+        } else {
+          body.removeEventListener("click", hideSubmenu);
+        }
+      }
+
+      function hideSubmenu(e) {
+        if (!e.target.closest(".submenu")) {
+          submenuButton.classList.remove("js-item-menu--submenu-open");
+          body.removeEventListener("click", hideSubmenu);
+          submenuIsOpen = false;
+        }
+      }
     }
   }
 })();

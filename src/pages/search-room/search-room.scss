@@ -1,0 +1,108 @@
+@import "../../assets/shared.scss";
+
+//  ========= UIkit ==========
+
+@import "../../uikit/elements/elements-page/elements-page.scss";
+@import "../../uikit/cards/cards-page/cards-page.scss";
+
+.main {
+  &__body {
+    display: flex;
+    padding-top: 100px;
+  }
+  &__sidebar-icon {
+    position: fixed;
+    top: 100px;
+    left: 15px;
+    display: none;
+    width: 100px;
+    height: 100px;
+    background: #000;
+  }
+  &__sidebar {
+    flex: 0 0 326px;
+    padding-right: 60px;
+    @include mb(30px);
+  }
+  &__slider {
+    .range-slider {
+      margin-bottom: 14px;
+    }
+    & p {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: $dark-50;
+    }
+  }
+  &__content {
+    flex: 1 1 auto;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 10px;
+    margin-bottom: 40px;
+  }
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+}
+.main-sidebar {
+  &__calendar {
+    position: relative;
+    height: 65.94px;
+
+    & .dropdown--menu-open {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 320px;
+    }
+  }
+}
+
+@media (max-width: 1185px) {
+  .room-card.card {
+    flex: 0 1 49%;
+  }
+  // .main__body {
+  //   position: relative;
+  // }
+  // .main__cards {
+  //   padding-left: 400px;
+  // }
+  // .main__sidebar {
+  //   position: fixed;
+  //   left: 0;
+  //   top: 0;
+  //   width: 326px;
+  //   height: 100%;
+  //   padding: 100px 60px 100px 15px;
+  //   overflow: auto;
+  // }
+}
+@media (max-width: 992px) {
+  .room-card.card {
+    flex: 0 1 32%;
+  }
+  .main__sidebar-icon {
+    display: block;
+  }
+  .main__sidebar {
+    display: none;
+  }
+  .main__title {
+    text-align: center;
+  }
+  .header {
+    &__logo {
+      // align-self: flex-end;
+    }
+  }
+}
