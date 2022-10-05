@@ -20,6 +20,7 @@ include ../head/head.pug
 
     +item-quantity-dropdown({
       js: true,
+			readonly: true,
       id: 'guests', 
       dropdownId: 'drop1',
       label: 'dropdown', 
@@ -45,6 +46,7 @@ include ../head/head.pug
     })
     +item-quantity-dropdown({
       js: true,
+			readonly: true,
       id: 'facilities', 
       dropdownId: 'drop2',
       label: 'dropdown', 
@@ -74,6 +76,7 @@ include ../head/head.pug
     +air-datepicker-calendar({
       drop1:{
         js: false, 
+				readonly: true,
         dropdownId: 'drop1',
         label: 'date dropdown', 
         type: 'text', 
@@ -87,6 +90,7 @@ include ../head/head.pug
       },
       drop2: {
         js: false, 
+				readonly: true,
         dropdownId: 'drop2',
         label: 'date dropdown', 
         type: 'text', 
@@ -101,7 +105,8 @@ include ../head/head.pug
     })
     +air-datepicker-calendar({
       drop1:{
-        js: false, 
+        js: false,
+				readonly: true,
         dropdownId: 'drop3',
         label: 'date dropdown', 
         type: 'text', 
@@ -116,6 +121,7 @@ include ../head/head.pug
     })
     +subscription-text-field({
       js: false, 
+			readonly: false,
       dropdownId: false,
       label: 'subscription text field', 
       type: 'email', 
@@ -227,6 +233,7 @@ include ../head/head.pug
       title: 'Найдём номера под ваши пожелания',
       drop1:{
         js: false, 
+        readonly: true,
         dropdownId: 'drop1',
         label: 'прибытие', 
         type: 'text', 
@@ -240,6 +247,7 @@ include ../head/head.pug
       },
       drop2: {
         js: false, 
+        readonly: true,
         dropdownId: 'drop2',
         label: 'выезд', 
         type: 'text', 
@@ -253,6 +261,7 @@ include ../head/head.pug
       },
       iqDropdown:{
         js: true,
+        readonly: true,
         id: 'guests', 
         dropdownId: 'drop3',
         label: 'гости', 
@@ -342,6 +351,7 @@ include ../head/head.pug
       worth: '9 990',
       drop1:{
         js: false, 
+        readonly: true,
         dropdownId: 'drop1',
         label: 'прибытие', 
         type: 'text', 
@@ -355,6 +365,7 @@ include ../head/head.pug
       },
       drop2: {
         js: false, 
+        readonly: true,
         dropdownId: 'drop2',
         label: 'выезд', 
         type: 'text', 
@@ -368,6 +379,7 @@ include ../head/head.pug
       },
       iqDropdown:{
         js: true,
+        readonly: true,
         id: 'guests', 
         dropdownId: 'drop3',
         label: 'гости', 

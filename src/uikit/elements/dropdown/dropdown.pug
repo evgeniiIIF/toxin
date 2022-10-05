@@ -7,7 +7,7 @@ mixin content(opts)
   - 
     var attributes = {
       'data-id': (opts.dropdownId),
-      readonly: (opts.js),
+      readonly: (opts.readonly),
       type: (opts.type),
       placeholder: (opts.placeholder),
       tabindex: (opts.tabindex),
@@ -32,6 +32,7 @@ mixin content(opts)
 
 //- +dropdown({
 //-   js: true, 
+//-   readonly: true,
 //-   dropdownId: 'drop1',
 //-   label: 'dropdown', 
 //-   type: 'text', 
